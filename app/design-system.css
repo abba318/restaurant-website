@@ -1,0 +1,615 @@
+:root {
+  --silver-50: #f8fafb;
+  --silver-100: #f0f3f5;
+  --silver-200: #e3e8ec;
+  --silver-300: #cbd3d9;
+  --silver-500: #77838d;
+  --silver-700: #46525c;
+  --silver-900: #202a32;
+  --silver-accent: #45515b;
+  --glass: rgba(255, 255, 255, .68);
+  --glass-strong: rgba(255, 255, 255, .84);
+  --glass-line: rgba(255, 255, 255, .8);
+  --glass-shadow: 0 18px 52px rgba(38, 48, 57, .10), 0 2px 8px rgba(38, 48, 57, .05);
+  --ink: #202a32;
+  --muted: #67737c;
+  --cream: #eef2f5;
+  --paper: rgba(255, 255, 255, .72);
+  --orange: #58656f;
+  --orange-dark: #35414a;
+  --line: rgba(133, 148, 159, .24);
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 28px; background: #eef2f5; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 12% 4%, rgba(255,255,255,.96), transparent 36rem),
+    radial-gradient(ellipse at 92% 22%, rgba(210,220,227,.55), transparent 34rem),
+    linear-gradient(145deg, #f7f9fa 0%, #e9eef2 56%, #f5f7f9 100%);
+  background-attachment: fixed;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select { font: inherit; }
+button, [role="button"] { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid rgba(75, 90, 101, .36); outline-offset: 3px; }
+
+/* A shared, translucent surface language for every route. */
+.card, .dish-card, .order-card, .checkout-form, .checkout-aside, .receipt-card,
+.tracking-card, .metric-card, .admin-panel, .admin-order, .admin-login-card,
+.payment-result-card, .empty-cart, .menu-state, .tg-order, .tg-login,
+[role="dialog"], dialog, .modal, .dropdown-menu, .cart-panel {
+  border: 1px solid var(--glass-line) !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.83), rgba(248,250,251,.56)) !important;
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.92) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  backdrop-filter: blur(22px) saturate(155%);
+}
+.card, .dish-card, .receipt-card, .tracking-card, .metric-card, .admin-panel,
+.admin-order, .admin-login-card, .payment-result-card, .empty-cart, .cart-panel { border-radius: 22px !important; }
+
+.wrap { max-width: 1240px; }
+.storefront .nav, .admin-header {
+  border: 1px solid rgba(255,255,255,.78) !important;
+  border-radius: 0 0 20px 20px;
+  background: rgba(246,249,251,.76) !important;
+  box-shadow: 0 8px 28px rgba(38,48,57,.07), inset 0 1px 0 white;
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+}
+.storefront .nav { position: sticky; top: 0; z-index: 30; }
+.brand, .cart-link, .back-link { color: #26323a; }
+.brand-mark, .storefront .brand-mark {
+  color: #26323a !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(207,216,222,.72)) !important;
+  border: 1px solid white;
+  box-shadow: 0 5px 16px rgba(38,48,57,.13), inset 0 1px 0 white !important;
+}
+.nav-menu-link, .storefront-footer a { color: #65727c; }
+.storefront .cart-link, .theme-toggle, .location-button {
+  border: 1px solid rgba(255,255,255,.95) !important;
+  border-radius: 999px !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(222,229,234,.62)) !important;
+  color: #26323a !important;
+  box-shadow: 0 5px 17px rgba(38,48,57,.09), inset 0 1px 0 white !important;
+}
+.storefront .cart-link .cart-count, .cart-link span {
+  background: linear-gradient(145deg, #65727c, #3c4851) !important;
+  color: white !important;
+}
+
+.storefront .hero {
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,.75) !important;
+  border-radius: 30px !important;
+  background:
+    radial-gradient(ellipse at 75% 48%, rgba(255,255,255,.92), transparent 46%),
+    linear-gradient(125deg, rgba(225,232,237,.88), rgba(248,250,251,.75) 53%, rgba(215,224,230,.75)) !important;
+  color: #202a32 !important;
+  box-shadow: 0 22px 60px rgba(37,48,58,.11), inset 0 1px 0 white;
+}
+.storefront .hero h1, .storefront .hero .hero-copy, .storefront .hero .hero-promise { color: #202a32 !important; }
+.storefront .hero h1 em, .storefront .hero .eyebrow, .storefront .hero-promise span { color: #58656f !important; }
+.storefront .hero::after { border: 1px solid rgba(255,255,255,.72); background: rgba(255,255,255,.32) !important; }
+.hero-photo { border-color: rgba(255,255,255,.88) !important; box-shadow: 0 24px 55px rgba(38,48,57,.2), 0 0 0 1px white !important; }
+.hero-photo-tag, .hero-note {
+  border: 1px solid rgba(255,255,255,.94) !important;
+  background: rgba(250,252,253,.78) !important;
+  color: #26323a !important;
+  box-shadow: 0 12px 34px rgba(38,48,57,.13), inset 0 1px 0 white !important;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.hero-note-icon { color: #35414a !important; background: linear-gradient(145deg, white, #dce3e8) !important; }
+.hero-spark, .hero-photo-tag span { color: #697680 !important; }
+.hero-plate { border-color: rgba(255,255,255,.96) !important; box-shadow: 0 16px 35px rgba(38,48,57,.16) !important; }
+.hero-plate span { color: #77838d !important; }
+
+.menu-section { scroll-margin-top: 30px; }
+.menu-search, .menu-search input, .order-filters input, .order-filters select,
+.field input, .field textarea, .field select, .order-card input, .order-card textarea,
+.status-control select, .tg-toolbar select, .tg-status select, .tg-login input {
+  border: 1px solid rgba(157,171,181,.38) !important;
+  border-radius: 14px !important;
+  background: rgba(255,255,255,.66) !important;
+  color: #202a32 !important;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.9), 0 3px 12px rgba(38,48,57,.04);
+}
+.menu-search:focus-within, .field input:focus, .field textarea:focus, .field select:focus,
+.order-card input:focus, .order-card textarea:focus {
+  border-color: #697780 !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 4px rgba(104,119,130,.13), inset 0 1px 2px white !important;
+}
+.field, .field>span, .fulfillment-choice legend { color: #43505a; }
+.field>span small, .muted, .menu-intro, .checkout-aside p { color: #68757e; }
+.category-tab, .plain-btn, .admin-header .plain-btn, .admin-refresh, .quantity button,
+.tg-refresh, .tg-primary, .tg-logout, .menu-state .plain-btn, .text-action,
+button.btn, a.btn, .btn, .pay-btn, .hero-btn, .view-order-cta, .order-receipt-button,
+.storefront-footer .view-order-footer, .result-secondary, .mobile-cart-dock {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border: 1px solid rgba(255,255,255,.95) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(222,229,234,.64)) !important;
+  color: #26323a !important;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 17px rgba(38,48,57,.10), inset 0 1px 0 white !important;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+.btn, .pay-btn, .hero-btn, .tg-primary { border-radius: 999px !important; }
+.category-tab { min-height: 40px; border-color: rgba(166,178,187,.45) !important; }
+.category-tab.active, .storefront .category-tab.active {
+  color: white !important;
+  border-color: rgba(72,84,94,.55) !important;
+  background: linear-gradient(145deg, #6a7781, #414d57) !important;
+}
+.storefront .hero-btn, .storefront .add-btn, .pay-btn, .tg-primary, .mobile-cart-total span {
+  color: white !important;
+  background: linear-gradient(145deg, #687680, #404c56) !important;
+  border-color: rgba(255,255,255,.7) !important;
+}
+button:hover, [role="button"]:hover, .btn:hover, .plain-btn:hover, .text-action:hover,
+.category-tab:hover, .theme-toggle:hover, .location-button:hover, .admin-refresh:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(38,48,57,.15), inset 0 1px 0 white !important;
+  border-color: white !important;
+}
+button:active, [role="button"]:active, .btn:active, .category-tab:active {
+  transform: translateY(1px) scale(.985);
+  box-shadow: 0 2px 7px rgba(38,48,57,.12), inset 0 2px 4px rgba(38,48,57,.08) !important;
+}
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid rgba(75,90,101,.4) !important; outline-offset: 3px;
+}
+button:disabled, .btn:disabled, .plain-btn:disabled, .admin-refresh:disabled,
+.theme-toggle:disabled, .location-button:disabled, select:disabled {
+  opacity: .48 !important; cursor: not-allowed !important; transform: none !important;
+  box-shadow: none !important;
+}
+.text-action { min-height: 34px; padding: 6px 11px; }
+.text-action.danger { color: #59636b !important; }
+.quantity button { width: 36px; height: 36px; padding: 0; border-radius: 50% !important; }
+.storefront .btn { min-height: 44px; }
+.mobile-cart-dock {
+  position: fixed; z-index: 40; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom)); left: 16px;
+  min-height: 66px; justify-content: space-between; padding: 10px 16px;
+  border-radius: 20px !important; background: rgba(245,248,250,.84) !important;
+  color: #202a32 !important; -webkit-backdrop-filter: blur(26px) saturate(170%); backdrop-filter: blur(26px) saturate(170%);
+}
+.mobile-cart-copy small { color: #65717a !important; }
+
+.success-notice, .admin-success, .status-pill.available, .payment-result-card.success .payment-result-icon,
+.tg-notice { background: rgba(225,231,235,.78) !important; border-color: rgba(171,183,191,.7) !important; color: #35414a !important; }
+.notice, .admin-banner, .error-state, .admin-error, .tg-alert {
+  border: 1px solid rgba(173,184,192,.56) !important;
+  border-radius: 15px !important;
+  background: rgba(255,255,255,.72) !important;
+  color: #35414a !important;
+  box-shadow: 0 6px 18px rgba(38,48,57,.06), inset 0 1px 0 white;
+}
+.status-pill, .count-pill, .order-status-chip, .current-order-status, .gps-coordinate-chip {
+  border: 1px solid rgba(255,255,255,.85) !important;
+  background: rgba(223,229,233,.72) !important;
+  color: #35414a !important;
+  box-shadow: inset 0 1px 0 white, 0 3px 8px rgba(38,48,57,.05);
+}
+.status-pill.available { background: rgba(218,226,231,.8) !important; color: #35414a !important; }
+.admin-session-label span, .loading-dot, .menu-result-dot { background: #78848d !important; box-shadow: 0 0 0 3px rgba(120,132,141,.15) !important; }
+
+.product-list, .product-row, .order-details, .order-bottomline, .receipt-meta,
+.receipt-line, .receipt-customer, .receipt-verify, .checkout-items, .total-row, .cart-row { border-color: rgba(128,144,155,.23) !important; }
+.product-thumb, .metric-icon, .empty-cart-icon, .aside-icon, .receipt-payment,
+.checkout-aside, .admin-empty { background: rgba(227,232,236,.6) !important; color: #45515b !important; }
+.receipt-payment strong, .tracking-steps li.done { color: #45515b !important; }
+.tracking-steps li.done>span { background: #65727c !important; border-color: #65727c !important; }
+.admin-order { background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(239,243,246,.58)) !important; }
+.product-row h3, .admin-order h3 { color: #27323a !important; }
+.aside-divider { background: rgba(128,144,155,.25) !important; }
+
+/* Telegram mini app uses inline component CSS; keep its controls and cards on this same surface. */
+body:has(.tg-miniapp) { background: linear-gradient(145deg,#f7f9fa,#e9eef2) !important; }
+html body .tg-miniapp { color: #202a32 !important; font-family: 'DM Sans',system-ui,sans-serif !important; }
+html body .tg-order, html body .tg-login { border-radius: 20px !important; }
+html body .tg-refresh { background: linear-gradient(145deg,#687680,#404c56) !important; color: white !important; }
+html body .tg-primary { color: white !important; }
+html body .tg-logout { min-height: 40px; padding: 9px 15px; border: 1px solid rgba(255,255,255,.95) !important; border-radius: 14px !important; background: linear-gradient(145deg,rgba(255,255,255,.9),rgba(222,229,234,.64)) !important; color: #26323a !important; font-weight: 700; box-shadow: 0 6px 17px rgba(38,48,57,.10),inset 0 1px 0 white !important; }
+html body .tg-order-meta, html body .tg-muted, html body .tg-kicker, html body .tg-order-id { color: #68757e !important; }
+html body .tg-items { border-color: rgba(128,144,155,.23) !important; }
+
+/* The theme switch remains functional while both appearances use the same silver palette. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #edf1f4; --muted: #b8c2c9; --cream: #171d22; --paper: rgba(37,45,52,.76);
+  --line: rgba(205,215,222,.18); --orange: #d2dae0; --orange-dark: #f2f5f7;
+  --glass: rgba(40,49,56,.74); --glass-strong: rgba(48,57,64,.88); --glass-line: rgba(255,255,255,.16);
+  color-scheme: dark;
+}
+html[data-theme="dark"] body {
+  color: #edf1f4;
+  background: radial-gradient(ellipse at 15% 0%, rgba(86,99,109,.32), transparent 34rem), linear-gradient(145deg,#171d22,#20282f 55%,#171d22);
+}
+html[data-theme="dark"] .storefront .nav, html[data-theme="dark"] .admin-header { background: rgba(28,35,41,.78) !important; border-color: rgba(255,255,255,.14) !important; }
+html[data-theme="dark"] .brand, html[data-theme="dark"] .cart-link, html[data-theme="dark"] .nav-menu-link,
+html[data-theme="dark"] .admin-order h3, html[data-theme="dark"] .product-row h3 { color: #edf1f4 !important; }
+html[data-theme="dark"] .storefront .hero { background: linear-gradient(125deg,rgba(45,54,61,.92),rgba(37,46,53,.78)) !important; color: #edf1f4 !important; }
+html[data-theme="dark"] .storefront .hero h1, html[data-theme="dark"] .storefront .hero .hero-copy,
+html[data-theme="dark"] .storefront .hero .hero-promise { color: #edf1f4 !important; }
+html[data-theme="dark"] .card, html[data-theme="dark"] .dish-card, html[data-theme="dark"] .order-card,
+html[data-theme="dark"] .checkout-form, html[data-theme="dark"] .checkout-aside, html[data-theme="dark"] .receipt-card,
+html[data-theme="dark"] .tracking-card, html[data-theme="dark"] .metric-card, html[data-theme="dark"] .admin-panel,
+html[data-theme="dark"] .admin-order, html[data-theme="dark"] .admin-login-card,
+html[data-theme="dark"] .payment-result-card, html[data-theme="dark"] .empty-cart, html[data-theme="dark"] .menu-state,
+html[data-theme="dark"] .tg-order, html[data-theme="dark"] .tg-login { background: linear-gradient(145deg,rgba(46,56,64,.88),rgba(34,42,48,.78)) !important; color: #edf1f4 !important; border-color: rgba(255,255,255,.16) !important; }
+html[data-theme="dark"] input, html[data-theme="dark"] textarea, html[data-theme="dark"] select,
+html[data-theme="dark"] .menu-search { background: rgba(21,27,32,.74) !important; color: #edf1f4 !important; border-color: rgba(220,228,233,.22) !important; }
+html[data-theme="dark"] .mobile-cart-dock { background: rgba(35,43,49,.84) !important; color: #edf1f4 !important; }
+html[data-theme="dark"] .mobile-cart-copy small, html[data-theme="dark"] .muted,
+html[data-theme="dark"] .tg-muted, html[data-theme="dark"] .tg-kicker { color: #b8c2c9 !important; }
+html[data-theme="dark"] button, html[data-theme="dark"] .btn, html[data-theme="dark"] .plain-btn,
+html[data-theme="dark"] .category-tab, html[data-theme="dark"] .theme-toggle,
+html[data-theme="dark"] .location-button, html[data-theme="dark"] .admin-refresh {
+  background: linear-gradient(145deg,rgba(89,102,112,.86),rgba(58,69,77,.82)) !important;
+  color: #f5f7f8 !important; border-color: rgba(255,255,255,.2) !important;
+}
+html[data-theme="dark"] .category-tab.active, html[data-theme="dark"] .pay-btn,
+html[data-theme="dark"] .tg-primary, html[data-theme="dark"] .mobile-cart-total span { background: linear-gradient(145deg,#78858e,#4e5b64) !important; color: white !important; }
+
+.photo-preview { border-radius: 15px !important; background: rgba(255,255,255,.72) !important; box-shadow: var(--glass-shadow); }
+.photo-preview img { border-radius: 11px; }
+.location-message { border-radius: 13px !important; background: rgba(255,255,255,.72) !important; }
+.location-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.location-actions .location-button { min-height: 34px; font-size: 11px; }
+.location-field textarea { min-height: 82px; }
+.photo-upload-button { justify-self: start; cursor: pointer; }
+.photo-file-input { position:absolute!important;width:1px!important;height:1px!important;min-height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important; }
+
+@media (max-width: 700px) {
+  .wrap { padding-right: 16px; padding-left: 16px; }
+  .receipt-card, .tracking-card, .admin-panel { border-radius: 20px !important; }
+  .admin-welcome { gap: 12px; }
+  .admin-welcome h1 { font-size: clamp(30px,9vw,38px); }
+  .admin-header-actions { gap: 8px; }
+}
+@media (max-width: 560px) {
+  .storefront { padding-right: 16px; padding-left: 16px; }
+  .storefront .nav { border-radius: 0 0 17px 17px; }
+  .storefront .hero { border-radius: 8px 8px 24px 24px !important; }
+  .storefront .dish-card { border-radius: 18px !important; }
+  .mobile-cart-dock { right: 12px; left: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); }
+  .form-grid { grid-template-columns: 1fr; }
+  .field-full { grid-column: auto; }
+  .receipt-actions { gap: 10px; flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* Neutral food placeholders and plate illustration; photography stays natural. */
+.storefront .dish-art:not(:has(img)), .dish-0, .dish-1, .dish-2, .dish-3 {
+  background: linear-gradient(145deg, #aeb9c1, #697680 58%, #45515b) !important;
+}
+.hero-plate::before {
+  background: radial-gradient(ellipse at 50% 55%,#aeb9c1 0 8%,transparent 9%),radial-gradient(ellipse at 35% 40%,#d7dde1 0 12%,transparent 13%),radial-gradient(ellipse at 65% 35%,#909da6 0 13%,transparent 14%),radial-gradient(ellipse at 51% 66%,#bdc6cc 0 11%,transparent 12%),linear-gradient(135deg,#d8dee2,#65727c) !important;
+}
+.hero-plate i, .hero-plate span { color: #65727c !important; background: #b5bfc6 !important; }
+.storefront .hero-btn:hover, .storefront .add-btn:hover, .storefront .category-tab.active:hover {
+  background: linear-gradient(145deg,#78858e,#4b5862) !important;
+}
+
+/* Dark appearance: true black canvas with calm silver glass surfaces. */
+html[data-theme="dark"] {
+  --ink: #f5f6f7;
+  --muted: #aeb5ba;
+  --cream: #000;
+  --paper: rgba(15,15,16,.88);
+  --line: rgba(255,255,255,.12);
+  --glass: rgba(12,12,13,.82);
+  --glass-strong: rgba(19,19,20,.94);
+  --glass-line: rgba(255,255,255,.14);
+  color-scheme: dark;
+  background: #000;
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] body:has(.tg-miniapp) {
+  color: #f5f6f7 !important;
+  background: #000 !important;
+  background-image: none !important;
+}
+html[data-theme="dark"] .storefront,
+html[data-theme="dark"] .admin-shell,
+html[data-theme="dark"] .wrap,
+html[data-theme="dark"] main {
+  color: #f5f6f7;
+}
+html[data-theme="dark"] .storefront .nav,
+html[data-theme="dark"] .admin-header {
+  background: rgba(7,7,8,.86) !important;
+  border-color: rgba(255,255,255,.13) !important;
+  box-shadow: 0 10px 32px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.09) !important;
+}
+html[data-theme="dark"] .storefront .hero {
+  background: linear-gradient(140deg,rgba(15,15,16,.97),rgba(5,5,6,.91)) !important;
+  color: #f5f6f7 !important;
+  border-color: rgba(255,255,255,.15) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+html[data-theme="dark"] .storefront .hero h1,
+html[data-theme="dark"] .storefront .hero .hero-copy,
+html[data-theme="dark"] .storefront .hero .hero-promise,
+html[data-theme="dark"] .storefront .hero h1 em,
+html[data-theme="dark"] .storefront .hero .eyebrow,
+html[data-theme="dark"] .storefront .hero-promise span,
+html[data-theme="dark"] .brand,
+html[data-theme="dark"] .cart-link,
+html[data-theme="dark"] .nav-menu-link,
+html[data-theme="dark"] .admin-shell h1,
+html[data-theme="dark"] .admin-shell h2,
+html[data-theme="dark"] .admin-shell h3,
+html[data-theme="dark"] .admin-login-card h1,
+html[data-theme="dark"] .card h3 { color: #f5f6f7 !important; }
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .dish-card,
+html[data-theme="dark"] .order-card,
+html[data-theme="dark"] .checkout-form,
+html[data-theme="dark"] .checkout-aside,
+html[data-theme="dark"] .receipt-card,
+html[data-theme="dark"] .tracking-card,
+html[data-theme="dark"] .metric-card,
+html[data-theme="dark"] .admin-panel,
+html[data-theme="dark"] .admin-order,
+html[data-theme="dark"] .admin-login-card,
+html[data-theme="dark"] .payment-result-card,
+html[data-theme="dark"] .empty-cart,
+html[data-theme="dark"] .menu-state,
+html[data-theme="dark"] .tg-order,
+html[data-theme="dark"] .tg-login {
+  background: linear-gradient(145deg,rgba(20,20,21,.92),rgba(8,8,9,.91)) !important;
+  color: #f1f2f3 !important;
+  border-color: rgba(255,255,255,.13) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+/* The search field is one glass control. Keep its icon and input on the same surface. */
+html[data-theme="dark"] .menu-search {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 15px;
+  border: 1px solid rgba(255,255,255,.17) !important;
+  border-radius: 999px !important;
+  background: rgba(12,12,13,.94) !important;
+  color: #d6dade !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 24px rgba(0,0,0,.35) !important;
+}
+html[data-theme="dark"] .menu-search input,
+html[data-theme="dark"] .menu-search input[type="search"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 2px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #f5f6f7 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder { color: #8e969c !important; opacity: 1; }
+html[data-theme="dark"] input:not(.photo-file-input),
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select,
+html[data-theme="dark"] .tg-login input {
+  border: 1px solid rgba(255,255,255,.16) !important;
+  border-radius: 13px !important;
+  background-color: #0b0b0c !important;
+  color: #f2f3f4 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+html[data-theme="dark"] .menu-search input { border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+html[data-theme="dark"] .menu-search:focus-within,
+html[data-theme="dark"] .field:focus-within,
+html[data-theme="dark"] .order-filters input:focus,
+html[data-theme="dark"] .order-filters select:focus {
+  border-color: rgba(255,255,255,.4) !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.09), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+html[data-theme="dark"] .order-filters { gap: 10px; }
+html[data-theme="dark"] .order-filters input,
+html[data-theme="dark"] .order-filters select { min-height: 44px; }
+html[data-theme="dark"] .field,
+html[data-theme="dark"] .field>span,
+html[data-theme="dark"] .fulfillment-choice legend,
+html[data-theme="dark"] .detail-label,
+html[data-theme="dark"] .metric-label,
+html[data-theme="dark"] .admin-label,
+html[data-theme="dark"] .status-control,
+html[data-theme="dark"] .status-control label,
+html[data-theme="dark"] .admin-footer,
+html[data-theme="dark"] .login-back-link,
+html[data-theme="dark"] .muted,
+html[data-theme="dark"] .menu-intro,
+html[data-theme="dark"] .checkout-aside p,
+html[data-theme="dark"] .product-row-copy p,
+html[data-theme="dark"] .order-details p,
+html[data-theme="dark"] .admin-empty p { color: #adb4b9 !important; }
+html[data-theme="dark"] .product-list,
+html[data-theme="dark"] .product-row,
+html[data-theme="dark"] .order-details,
+html[data-theme="dark"] .order-bottomline,
+html[data-theme="dark"] .receipt-meta,
+html[data-theme="dark"] .receipt-line,
+html[data-theme="dark"] .receipt-customer,
+html[data-theme="dark"] .receipt-verify,
+html[data-theme="dark"] .checkout-items,
+html[data-theme="dark"] .total-row,
+html[data-theme="dark"] .cart-row,
+html[data-theme="dark"] .admin-footer { border-color: rgba(255,255,255,.12) !important; }
+html[data-theme="dark"] .admin-empty,
+html[data-theme="dark"] .product-thumb,
+html[data-theme="dark"] .metric-icon,
+html[data-theme="dark"] .empty-cart-icon,
+html[data-theme="dark"] .aside-icon,
+html[data-theme="dark"] .receipt-payment,
+html[data-theme="dark"] .checkout-aside,
+html[data-theme="dark"] .count-pill,
+html[data-theme="dark"] .status-pill,
+html[data-theme="dark"] .order-status-chip,
+html[data-theme="dark"] .current-order-status,
+html[data-theme="dark"] .gps-coordinate-chip,
+html[data-theme="dark"] .location-message,
+html[data-theme="dark"] .photo-preview {
+  background: rgba(255,255,255,.07) !important;
+  color: #e6e9eb !important;
+  border-color: rgba(255,255,255,.13) !important;
+}
+html[data-theme="dark"] .storefront .cart-link,
+html[data-theme="dark"] .theme-toggle,
+html[data-theme="dark"] .location-button,
+html[data-theme="dark"] button,
+html[data-theme="dark"] .btn,
+html[data-theme="dark"] .plain-btn,
+html[data-theme="dark"] .text-action,
+html[data-theme="dark"] .category-tab,
+html[data-theme="dark"] .admin-refresh,
+html[data-theme="dark"] .view-order-cta,
+html[data-theme="dark"] .order-receipt-button {
+  border-color: rgba(255,255,255,.18) !important;
+  background: linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.055)) !important;
+  color: #f2f3f4 !important;
+  box-shadow: 0 5px 16px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+html[data-theme="dark"] .storefront .hero-btn,
+html[data-theme="dark"] .storefront .add-btn,
+html[data-theme="dark"] .pay-btn,
+html[data-theme="dark"] .tg-primary,
+html[data-theme="dark"] .category-tab.active,
+html[data-theme="dark"] .mobile-cart-total span {
+  background: linear-gradient(145deg,#f0f1f2,#b9bec2) !important;
+  color: #080808 !important;
+  border-color: rgba(255,255,255,.7) !important;
+}
+html[data-theme="dark"] .mobile-cart-dock {
+  background: rgba(10,10,11,.92) !important;
+  color: #f3f4f5 !important;
+  border-color: rgba(255,255,255,.16) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+html[data-theme="dark"] .mobile-cart-copy small,
+html[data-theme="dark"] .tg-muted,
+html[data-theme="dark"] .tg-kicker,
+html[data-theme="dark"] .tg-order-meta,
+html[data-theme="dark"] .tg-order-id { color: #adb4b9 !important; }
+html[data-theme="dark"] .notice,
+html[data-theme="dark"] .admin-banner,
+html[data-theme="dark"] .error-state,
+html[data-theme="dark"] .admin-error,
+html[data-theme="dark"] .admin-success,
+html[data-theme="dark"] .success-notice,
+html[data-theme="dark"] .tg-alert,
+html[data-theme="dark"] .tg-notice {
+  background: rgba(255,255,255,.07) !important;
+  color: #e8eaec !important;
+  border-color: rgba(255,255,255,.15) !important;
+}
+html[data-theme="dark"] .status-pill.available,
+html[data-theme="dark"] .payment-result-card.success .payment-result-icon,
+html[data-theme="dark"] .tracking-steps li.done>span {
+  background: rgba(255,255,255,.18) !important;
+  border-color: rgba(255,255,255,.3) !important;
+  color: #f3f4f5 !important;
+}
+html[data-theme="dark"] .text-action.danger,
+html[data-theme="dark"] .admin-error.admin-banner { color: #f0c3bd !important; }
+html[data-theme="dark"] .storefront .hero-plate span,
+html[data-theme="dark"] .storefront .hero-plate i { color: #c4c9cd !important; }
+html[data-theme="dark"] .storefront .dish-art:not(:has(img)),
+html[data-theme="dark"] .dish-0,
+html[data-theme="dark"] .dish-1,
+html[data-theme="dark"] .dish-2,
+html[data-theme="dark"] .dish-3 { background: linear-gradient(145deg,#45494c,#1b1c1e) !important; }
+
+
+/* Light-mode search field: the wrapper owns the surface; its input stays transparent. */
+html:not([data-theme="dark"]) .storefront .menu-search input,
+html:not([data-theme="dark"]) .storefront .menu-search input[type="search"] {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+html:not([data-theme="dark"]) .storefront .menu-search input:focus-visible { outline: 0 !important; }
+
+/* Keep dashboard row actions compact in both themes. */
+.admin-shell .text-action {
+  min-height: 30px;
+  padding: 4px 9px;
+  border-radius: 9px !important;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.admin-shell .product-actions { gap: 7px; }
+.admin-shell .status-control { gap: 8px; }
+.admin-shell .status-control select {
+  width: min(100%, 156px);
+  max-width: 156px;
+  min-height: 32px;
+  padding: 5px 9px;
+  border-radius: 9px !important;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.admin-shell .status-control .order-receipt-button {
+  min-height: 32px;
+  padding: 5px 10px;
+  border-radius: 10px !important;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Give pasted image URLs room and keep their preview from stretching the form. */
+.admin-shell .photo-url-field,
+.admin-shell .photo-upload-field { min-width: 0; }
+.admin-shell .photo-url-field input { width: 100%; min-width: 0; direction: ltr; }
+.admin-shell .photo-url-help { line-height: 1.4; }
+.admin-shell .photo-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--glass-line);
+  padding: 10px 12px;
+}
+.admin-shell .photo-preview img {
+  display: block;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+.admin-shell .photo-preview span { min-width: 0; overflow-wrap: anywhere; font-size: 12px; line-height: 1.4; }
+
+/* Keep staff removal compact and let the uploaded-photo preview show through. */
+.admin-shell .staff-row { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; }
+.admin-shell .staff-remove-button { justify-self: end; width: max-content; min-width: 0; min-height: 27px; padding: 3px 7px; font-size: 10px; line-height: 1.2; }
+.admin-shell .photo-preview { background: rgba(255, 255, 255, .48) !important; }
+html[data-theme="dark"] .admin-shell .photo-preview { background: rgba(255, 255, 255, .035) !important; }
