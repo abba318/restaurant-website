@@ -421,7 +421,7 @@ export default function Admin() {
     <main className="wrap admin-shell">
       <header className="admin-header">
         <Link href="/" className="brand"><span className="brand-mark">R</span> Restaurant <span className="admin-label">STAFF</span></Link>
-        <div className="admin-header-actions"><ThemeToggle /><span className="admin-session-label"><span /> Secure staff session</span><button className="plain-btn" onClick={logout} disabled={busy}>Sign out</button></div>
+        <div className="admin-header-actions"><ThemeToggle />{canManageStaff && <Link className="plain-btn visitor-log-nav-link" href="/admin/visitors">Visitor IP log</Link>}<span className="admin-session-label"><span /> Secure staff session</span><button className="plain-btn" onClick={logout} disabled={busy}>Sign out</button></div>
       </header>
 
       <section className="admin-welcome"><div><p className="eyebrow">YOUR RESTAURANT, AT A GLANCE</p><h1>Dashboard</h1><p className="muted">Manage your menu and keep every order moving.</p></div><button className="admin-refresh" onClick={loadDashboard} disabled={loadingDashboard}>{loadingDashboard ? 'Refreshing…' : '↻ Refresh'}</button></section>

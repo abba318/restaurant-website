@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 type Theme = 'light' | 'dark';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
     let saved: string | null = null;
     try { saved = window.localStorage.getItem('restaurant-theme'); } catch { /* Keep the default theme when storage is blocked. */ }
-    const next: Theme = saved === 'dark' ? 'dark' : 'light';
+    const next: Theme = saved === 'light' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     setTheme(next);
   }, []);

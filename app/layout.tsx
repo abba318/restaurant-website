@@ -1,6 +1,8 @@
 import './storefront.css';
 import './globals.css';
 import './design-system.css';
+import './restaurant-ai-studio.css';
+import './restaurant-ai-studio-pages.css';
 import type { Metadata, Viewport } from 'next';
 
 export const metadata: Metadata = {
@@ -27,9 +29,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#eef2f5',
+  themeColor: '#09090b',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en-NG"><body>{children}</body></html>;
+  return <html lang="en-NG" data-theme="dark"><body>{children}</body></html>;
 }
